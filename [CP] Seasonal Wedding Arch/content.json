@@ -1,0 +1,466 @@
+{
+    "Format": "2.9.0",
+	
+	"ConfigSchema": {
+		//Flower Selection Section
+		"Spring Arch Type" : {
+			"AllowValues": "Tulip, Daffodil, RSV-RidgeAzorean, Wildflour-CreepingDaisy, Wildflour-Mysteria, Cornucopia-Lilac, Cornucopia-MorningGlory, Cornucopia-Rose, Cornucopia-RosePrismatic",
+            "Default": "Tulip",
+			"Section": "Arch Options"
+		},
+		"Summer Arch Type" : {
+			"AllowValues": "Spangle, SweetPea, Sunflower, RSV-MountainHokkaido, Wildflour-ForestChamomile, Wildflour-Valerian, Cornucopia-Lilac, Cornucopia-Hydrangea, Cornucopia-Lily, Cornucopia-Rose, Cornucopia-RosePrismatic",
+            "Default": "Spangle",
+			"Section": "Arch Options"
+		},
+		"Fall Arch Type" : {
+			"AllowValues": "Sunflower, FairyRose, RSV-SummitSnowbell, Wildflour-PieBlossom, Wildflour-CaramelBlossom, Cornucopia-Clematis, Cornucopia-Dahlia, Cornucopia-Rose, Cornucopia-RosePrismatic",
+            "Default": "FairyRose",
+			"Section": "Arch Options"
+		},
+		"Winter Arch Type" : {
+			"AllowValues": "Crocus, Holly, RSV-AuroreanIris, Wildflour-QuartzPrimrose, Wildflour-SugarBlossom, Cornucopia-Rose, Cornucopia-RosePrismatic",
+            "Default": "Crocus",
+			"Section": "Arch Options"
+		},
+		"Wood Colour" : {
+			"AllowValues": "Default, Birch, Walnut, Mahogany, Oak, Dark, Cornucopia-SpringTrellis, Cornucopia-SummerTrellis, Cornucopia-FallTrellis, Cornucopia-WinterTrellis, Cornucopia-SeasonalTrellis",
+            "Default": "Default",
+			"Section": "Arch Options"
+		},
+		//Compatibility Section
+		"RSV Arch" : {
+			"AllowValues": "true, false",
+            "Default": "true",
+			"Description": "Edit the arch shown during the Ridgeside Village hotel wedding reception.",
+			"Section": "Compatibility"
+		},	
+		"Custom Wedding Ceremony Decor" : {
+			"AllowValues": "true, false",
+            "Default": "true",
+			"Description": "Replace the misc wedding decorations shown in the custom wedding ceremony to better match the seasonal wedding arch.",
+			"Section": "Compatibility"
+		},
+		"Custom Wedding Ceremony Rug Colour" : {
+			"AllowValues": "Green, Beige, White, Original",
+            "Default": "Green",
+			"Description": "Recolour the decorative rug shown in the custom wedding ceremony to better match the seasonal wedding arch.",
+			"Section": "Compatibility"
+		},
+		"Life Cycle Arch" : {
+			"AllowValues": "true, false",
+            "Default": "false",
+			"Description": "Edit the arch shown during the Rival Heart Events NPC wedding ceremonies. Note: Lewis' positioning in the ceremony means he clips the arch slightly.",
+			"Section": "Compatibility"
+		},	
+		"Enable Mod" : {
+			"AllowValues": "true, false",
+            "Default": "true",
+			"Description": "Toggle this mod without uninstalling it, in case you want to view an event with the original arch. Mostly for debugging.",
+			"Section": "Compatibility"
+		},	
+	},
+	"DynamicTokens": [
+//WOOD TYPE
+	//Default fallback
+		{
+			"Name": "WoodTypeToken",
+			"Value": "Default",
+		},
+	//Non-seasonal
+		{
+			"Name": "WoodTypeToken",
+			"Value": "{{Wood Colour}}",
+			"When": {
+				"Wood Colour": "Default, Birch, Walnut, Mahogany, Oak, Dark, Cornucopia-SpringTrellis, Cornucopia-SummerTrellis, Cornucopia-FallTrellis, Cornucopia-WinterTrellis"
+			}
+		},
+	//Cornucopia seasonal
+		{
+			"Name": "WoodTypeToken",
+			"Value": "Cornucopia-{{Season}}Trellis",
+			"When": {
+				"Wood Colour": "Cornucopia-SeasonalTrellis"
+			}
+		},
+//SPRING
+	//Default fallback
+		{
+			"Name": "ArchTypeToken",
+			"Value": "Tulip",
+			"When": {
+				"Season": "spring"
+			}
+		},
+	//Vanilla
+		{
+			"Name": "ArchTypeToken",
+			"Value": "{{Spring Arch Type}}",
+			"When": {
+				"Season": "spring",
+				"Spring Arch Type": "Tulip, Daffodil"
+			}
+		},
+	//Wildflour Atelier Goods
+		{
+			"Name": "ArchTypeToken",
+			"Value": "{{Spring Arch Type}}",
+			"When": {
+				"Season": "spring",
+				"Spring Arch Type": "Wildflour-CreepingDaisy, Wildflour-Mysteria",
+				"HasMod": "Wildflour.AtelierGoods"
+			}
+		},
+	//Cornucopia More Flowers
+		{
+			"Name": "ArchTypeToken",
+			"Value": "{{Spring Arch Type}}",
+			"When": {
+				"Season": "spring",
+				"Spring Arch Type": "Cornucopia-Lilac, Cornucopia-MorningGlory, Cornucopia-Rose, Cornucopia-RosePrismatic",
+				"HasMod": "Cornucopia.MoreFlowers"
+			}
+		},
+	//RSV
+		{
+			"Name": "ArchTypeToken",
+			"Value": "{{Spring Arch Type}}",
+			"When": {
+				"Season": "spring",
+				"Spring Arch Type": "RSV-RidgeAzorean",
+				"HasMod": "Rafseazz.RSVCP"
+			}
+		},
+//SUMMER
+	//Default fallback
+		{
+			"Name": "ArchTypeToken",
+			"Value": "Spangle",
+			"When": {
+				"Season": "summer",
+			}
+		},
+	//Vanilla
+		{
+			"Name": "ArchTypeToken",
+			"Value": "{{Summer Arch Type}}",
+			"When": {
+				"Season": "summer",
+				"Summer Arch Type": "Spangle, SweetPea, Sunflower",
+			}
+		},
+	//Wildflour Atelier Goods
+		{
+			"Name": "ArchTypeToken",
+			"Value": "{{Summer Arch Type}}",
+			"When": {
+				"Season": "summer",
+				"Summer Arch Type": "Wildflour-ForestChamomile, Wildflour-Valerian",
+				"HasMod": "Wildflour.AtelierGoods" 
+			}
+		},
+	//Cornucopia More Flowers
+		{
+			"Name": "ArchTypeToken",
+			"Value": "{{Summer Arch Type}}",
+			"When": {
+				"Season": "summer",
+				"Summer Arch Type": "Cornucopia-Lilac, Cornucopia-Hydrangea, Cornucopia-Lily, Cornucopia-Rose, Cornucopia-RosePrismatic",
+				"HasMod": "Cornucopia.MoreFlowers" 
+			}
+		},
+	//RSV
+		{
+			"Name": "ArchTypeToken",
+			"Value": "{{Summer Arch Type}}",
+			"When": {
+				"Season": "summer",
+				"Summer Arch Type": "RSV-MountainHokkaido",
+				"HasMod": "Rafseazz.RSVCP"
+			}
+		},
+//FALL
+	//Default fallback
+		{
+			"Name": "ArchTypeToken",
+			"Value": "SunFlower",
+			"When": {
+				"Season": "fall",
+			}
+		},
+	//Vanilla
+		{
+			"Name": "ArchTypeToken",
+			"Value": "{{Fall Arch Type}}",
+			"When": {
+				"Season": "fall",
+				"Fall Arch Type": "Sunflower, FairyRose",
+			}
+		},
+	//Wildflour Atelier Goods
+		{
+			"Name": "ArchTypeToken",
+			"Value": "{{Fall Arch Type}}",
+			"When": {
+				"Season": "fall",
+				"Fall Arch Type": "Wildflour-PieBlossom, Wildflour-CaramelBlossom",
+				"HasMod": "Wildflour.AtelierGoods" 
+			}
+		},
+	//Cornucopia More Flowers
+		{
+			"Name": "ArchTypeToken",
+			"Value": "{{Fall Arch Type}}",
+			"When": {
+				"Season": "fall",
+				"Fall Arch Type": "Cornucopia-Clematis, Cornucopia-Dahlia, Cornucopia-Rose, Cornucopia-RosePrismatic",
+				"HasMod": "Cornucopia.MoreFlowers" 
+			}
+		},
+	//RSV
+		{
+			"Name": "ArchTypeToken",
+			"Value": "{{Fall Arch Type}}",
+			"When": {
+				"Season": "fall",
+				"Fall Arch Type": "RSV-SummitSnowbell",
+				"HasMod": "Rafseazz.RSVCP"
+			}
+		},
+//WINTER
+	//Default fallback
+		{
+			"Name": "ArchTypeToken",
+			"Value": "Crocus",
+			"When": {
+				"Season": "winter",
+			}
+		},
+	//Vanilla
+		{
+			"Name": "ArchTypeToken",
+			"Value": "{{Winter Arch Type}}",
+			"When": {
+				"Season": "winter",
+				"Winter Arch Type": "Crocus, Holly",
+			}
+		},
+	//Wildflour Atelier Goods
+		{
+			"Name": "ArchTypeToken",
+			"Value": "{{Winter Arch Type}}",
+			"When": {
+				"Season": "winter",
+				"Winter Arch Type": "Wildflour-QuartzPrimrose, Wildflour-SugarBlossom",
+				"HasMod": "Wildflour.AtelierGoods" 
+			}
+		},
+	//Cornucopia More Flowers
+		{
+			"Name": "ArchTypeToken",
+			"Value": "{{Winter Arch Type}}",
+			"When": {
+				"Season": "winter",
+				"Winter Arch Type": "Cornucopia-Rose, Cornucopia-RosePrismatic",
+				"HasMod": "Cornucopia.MoreFlowers" 
+			}
+		},
+	//RSV
+		{
+			"Name": "ArchTypeToken",
+			"Value": "{{Winter Arch Type}}",
+			"When": {
+				"Season": "winter",
+				"Winter Arch Type": "RSV-AuroreanIris",
+				"HasMod": "Rafseazz.RSVCP"
+			}
+		},
+	],
+	"Changes": [
+	//Load arch
+        {
+            "Action": "Load",
+            "Target": "KaileyStardew.WeddingArch/{{WoodTypeToken}}_wood",
+            "FromFile": "assets/wood/{{TargetWithoutPath}}.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "KaileyStardew.WeddingArch/{{Season}}_{{ArchTypeToken}}_arch",
+            "FromFile": "assets/{{TargetWithoutPath}}.png"
+        },
+	//Load CWC Compat
+        {
+            "Action": "Load",
+            "Target": "KaileyStardew.WeddingArch/{{Season}}_{{ArchTypeToken}}_CWC_extra, KaileyStardew.WeddingArch/{{Custom Wedding Ceremony Rug Colour}}_CWC_rug, KaileyStardew.WeddingArch/{{WoodTypeToken}}_CWC_wood",
+            "FromFile": "assets/CWC/{{TargetWithoutPath}}.png"
+        },	
+	//Vanilla edits
+		{
+			"Action": "EditImage",
+			"Target": "LooseSprites/Cursors",
+			"FromFile": "assets/wood/{{WoodTypeToken}}_wood.png",
+			"ToArea": { "X": 526, "Y": 1184, "Width": 112, "Height": 91 },
+			"Priority": "Late",
+			"When": {
+				"Enable Mod": "true"
+			}
+		},
+		{
+			"Action": "EditImage",
+			"Target": "LooseSprites/Cursors",
+			"FromFile": "assets/{{Season}}_{{ArchTypeToken}}_arch.png",
+			"ToArea": { "X": 526, "Y": 1184, "Width": 112, "Height": 91 },
+			"PatchMode": "Overlay",
+			"Priority": "Late",
+			"When": {
+				"Enable Mod": "true"
+			}
+		},
+	//CWC compat - Arch + Left Candle
+		{
+			"Action": "EditImage",
+			"Target": "Maps/WeddingDecorations",
+			"FromFile": "assets/wood/{{WoodTypeToken}}_wood.png",
+			"FromArea": { "X": 0, "Y": 11, "Width": 112, "Height": 80 },
+			"Priority": "Late",
+			"When": {
+				"HasMod": "Airyn.CWC",
+				"Enable Mod": "true"
+			}
+		},
+		{
+			"Action": "EditImage",
+			"Target": "Maps/WeddingDecorations",
+			"FromFile": "assets/{{Season}}_{{ArchTypeToken}}_arch.png",
+			"FromArea": { "X": 0, "Y": 11, "Width": 112, "Height": 80 },
+			"PatchMode": "Overlay",
+			"Priority": "Late",
+			"When": {
+				"HasMod": "Airyn.CWC",
+				"Enable Mod": "true"
+			}
+		},
+	//CWC compat - Right Candle
+		{
+			"Action": "EditImage",
+			"Target": "Maps/WeddingDecorations",
+			"FromFile": "assets/{{Season}}_{{ArchTypeToken}}_arch.png",
+			"FromArea": { "X": 0, "Y": 59, "Width": 14, "Height": 32 },
+			"ToArea": { "X": 112, "Y": 48, "Width": 14, "Height": 32 },
+			"Priority": "Late",
+			"When": {
+				"HasMod": "Airyn.CWC",
+				"Enable Mod": "true"
+			}
+		},
+	//CWC compat - Rug
+		{
+			"Action": "EditImage",
+			"Target": "Maps/WeddingDecorations",
+			"FromFile": "assets/CWC/{{Custom Wedding Ceremony Rug Colour}}_CWC_rug.png",
+			"FromArea": { "X": 0, "Y": 0, "Width": 80, "Height": 48 },
+			"ToArea": { "X": 0, "Y": 80, "Width": 80, "Height": 48 },
+			"Priority": "Late",
+			"When": {
+				"Custom Wedding Ceremony Rug Colour": "Green, Beige, White",
+				"HasMod": "Airyn.CWC",
+				"Enable Mod": "true"
+			}
+		},
+	//CWC compat - Extra Decor
+		{
+			"Action": "Include",
+			"FromFile": "data/CWC_ExtraDecor.json",
+			"When": {
+					"Custom Wedding Ceremony Decor": true,
+					"HasMod": "Airyn.CWC",
+					"DayEvent": "wedding",	
+					"Enable Mod": "true"				
+			 }
+		},
+	//Life Cycle compat - Arch + Left Candle
+		{
+			"Action": "EditImage",
+			"Target": "Characters/ArchLF",
+			"FromFile": "assets/wood/{{WoodTypeToken}}_wood.png",
+			"FromArea": { "X": 0, "Y": 11, "Width": 112, "Height": 79 },
+			"ToArea": { "X": 1, "Y": 0, "Width": 112, "Height": 79 },
+			"Priority": "Late",
+			"When": {
+				"Life Cycle Arch": "true",
+				"HasMod": "nraittanna.LifeCycle",
+				"Enable Mod": "true"
+			}
+		},
+		{
+			"Action": "EditImage",
+			"Target": "Characters/ArchLF",
+			"FromFile": "assets/{{Season}}_{{ArchTypeToken}}_arch.png",
+			"FromArea": { "X": 0, "Y": 11, "Width": 112, "Height": 79 },
+			"ToArea": { "X": 1, "Y": 0, "Width": 112, "Height": 79 },
+			"PatchMode": "Overlay",
+			"Priority": "Late",
+			"When": {
+				"Life Cycle Arch": "true",
+				"HasMod": "nraittanna.LifeCycle",
+				"Enable Mod": "true"
+			}
+		},
+	//Life Cycle compat - Right Candle
+		{
+			"Action": "EditImage",
+			"Target": "Characters/ArchLF",
+			"FromFile": "assets/{{Season}}_{{ArchTypeToken}}_arch.png",
+			"FromArea": { "X": 0, "Y": 59, "Width": 14, "Height": 31 },
+			"ToArea": { "X": 114, "Y": 48, "Width": 14, "Height": 31 },
+			"Priority": "Late",
+			"When": {
+				"Life Cycle Arch": "true",
+				"HasMod": "nraittanna.LifeCycle",
+				"Enable Mod": "true"
+			}
+		},
+	//RSV compat - Arch
+		{
+			"Action": "EditImage",
+			"Target": "Maps/z_rsvinterior",
+			"FromFile": "assets/wood/{{WoodTypeToken}}_wood.png",
+			"FromArea": { "X": 14, "Y": 11, "Width": 98, "Height": 79 },
+			"ToArea": { "X": 45, "Y": 241, "Width": 98, "Height": 79 },
+			"Priority": "Late",
+			"When": {
+				"RSV Arch": "true",
+				"HasMod": "Rafseazz.RSVCP",
+				"Enable Mod": "true"
+			}
+		},
+		{
+			"Action": "EditImage",
+			"Target": "Maps/z_rsvinterior",
+			"FromFile": "assets/{{Season}}_{{ArchTypeToken}}_arch.png",
+			"FromArea": { "X": 14, "Y": 11, "Width": 98, "Height": 79 },
+			"ToArea": { "X": 45, "Y": 241, "Width": 98, "Height": 79 },
+			"PatchMode": "Overlay",
+			"Priority": "Late",
+			"When": {
+				"RSV Arch": "true",
+				"HasMod": "Rafseazz.RSVCP",
+				"Enable Mod": "true"
+			}
+		},
+	//RSV compat - Candle
+		{
+			"Action": "EditImage",
+			"Target": "Maps/z_rsvinterior",
+			"FromFile": "assets/{{Season}}_{{ArchTypeToken}}_arch.png",
+			"FromArea": { "X": 0, "Y": 64, "Width": 14, "Height": 27 },
+			"ToArea": { "X": 0, "Y": 213, "Width": 14, "Height": 27 },
+			"Priority": "Late",
+			"When": {
+				"RSV Arch": "true",
+				"HasMod": "Rafseazz.RSVCP",
+				"Enable Mod": "true"
+			}
+		},
+	]
+}

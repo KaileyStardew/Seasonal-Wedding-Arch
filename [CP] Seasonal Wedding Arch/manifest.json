@@ -1,0 +1,14 @@
+{
+  "Name": "Seasonal Wedding Arch",
+  "Author": "KaileyStardew",
+  "Version": "1.3.0",
+  "Description": "A seasonal floral wedding arch.",
+  "UniqueID": "KaileyStardew.WeddingArch",
+  "UpdateKeys": [ "Nexus:23020" ],
+  "Dependencies": [
+		{"UniqueID": "Wildflour.AtelierGoods", "IsRequired": false}
+	  ],
+  "ContentPackFor": {
+    "UniqueID": "Pathoschild.ContentPatcher",
+  }
+}

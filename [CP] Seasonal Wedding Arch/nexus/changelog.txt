@@ -1,0 +1,19 @@
+-Added Cornucopia - More Flowers compat:
+	-All seasons: Seasonal Rose, Prismatic rose
+	-Spring: Lilac, Morning Glory
+	-Summer: Lilac, Hydrangea, Lily
+	-Fall: Clematis, Dahlia
+
+-Added Ridgeside Village compat:
+	-The wedding arch in the hotel wedding reception and anniversary party is now replaced (configurable)
+	-Spring: Ridge Azorean
+	-Summer: Mountain Hokkaido
+	-Fall: Summit Snowbell
+	-Winter: Aurorean Iris
+
+-Added nine new wood colours for the arch! These can be configured independently from the flower options
+-Added extra compat with Custom Wedding Ceremony (configurable); the rug and misc. decor can now be recoloured to better match the seasonal arches
+-Added compat with Life Cycle (configurable); this is off by default. Lewis' position in the ceremony unfortunately means he clips with the seasonal arch because it has wider beams than the vanilla arch
+-Fixed some base-game flowers clipping on the left side
+-Fixed some winter arch variants being a pixel shorter
+-Fixed positioning issue with winter candles

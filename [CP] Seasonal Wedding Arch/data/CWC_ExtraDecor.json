@@ -1,0 +1,67 @@
+{
+    "Changes": [
+	//CWC compat - TownInterior Chair
+		{
+			"Action": "EditImage",
+			"Target": "Maps/TownInterior",
+			"FromFile": "assets/CWC/{{WoodTypeToken}}_CWC_wood.png",
+			"FromArea": { "X": 0, "Y": 0, "Width": 16, "Height": 32 },
+			"ToArea": { "X": 176, "Y": 368, "Width": 16, "Height": 32 },
+			"Priority": "Late",
+			"When": {
+				"LocationName": "Temp",
+				//This is to try and minimize non-wedding content getting caught in the crossfire, since the location is Temp (not unique) and the assets are on vanilla sheets. 
+				//Since your location changes after the cutscene, OnLocationChange should be enough. My concern is impacting other events (which take place in Temp), but this should limit it to first-thing-in-the-morning wedding-day events.
+				//If a user somehow manages to have a 6AM cutscene on their wedding day that uses these specific assets while playing with both this mod and CWC, they win a prize because that's ridiculously specific.
+				"Time": "{{Range: 0600, 0610}}"	
+			},
+			"Update": "OnLocationChange"
+		},
+	//CWC Compat - Festivals
+		//Mask
+		{
+			"Action": "EditImage",
+			"Target": "Maps/Festivals",
+			"FromFile": "assets/CWC/Mask_CWC_extra.png",
+			"FromArea": { "X": 0, "Y": 0, "Width": 80, "Height": 112 },
+			"ToArea": { "X": 48, "Y": 0, "Width": 80, "Height": 112 },
+			"PatchMode": "Mask",
+			"Priority": "Late",
+			"When": {
+				"LocationName": "Temp",
+				"Time": "{{Range: 0600, 0610}}"	
+			},
+			"Update": "OnLocationChange"
+		},
+		//Wood
+		{
+			"Action": "EditImage",
+			"Target": "Maps/Festivals",
+			"FromFile": "assets/CWC/{{WoodTypeToken}}_CWC_wood.png",
+			"FromArea": { "X": 16, "Y": 0, "Width": 80, "Height": 112 },
+			"ToArea": { "X": 48, "Y": 0, "Width": 80, "Height": 112 },
+			"PatchMode": "Overlay",
+			"Priority": "Late",
+			"When": {
+				"LocationName": "Temp",
+				"Time": "{{Range: 0600, 0610}}"	
+			},
+			"Update": "OnLocationChange"
+		},
+		//Deco
+		{
+			"Action": "EditImage",
+			"Target": "Maps/Festivals",
+			"FromFile": "assets/CWC/{{Season}}_{{ArchTypeToken}}_CWC_extra.png",
+			"FromArea": { "X": 16, "Y": 0, "Width": 80, "Height": 112 },
+			"ToArea": { "X": 48, "Y": 0, "Width": 80, "Height": 112 },
+			"PatchMode": "Overlay",
+			"Priority": "Late",
+			"When": {
+				"LocationName": "Temp",
+				"Time": "{{Range: 0600, 0610}}"	
+			},
+			"Update": "OnLocationChange"
+		},	
+    ]
+}

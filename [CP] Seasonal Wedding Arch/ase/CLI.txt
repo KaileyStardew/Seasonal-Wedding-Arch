@@ -1,0 +1,14 @@
+---arch export---
+"C:\Program Files (x86)\Steam\steamapps\common\Aseprite\aseprite.exe" -b --ignore-layer "Wood" "C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\Mods\[CP] Seasonal Wedding Arch\Ase\seasonal_arch.ase" --split-tags --filename-format "C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\Mods\[CP] Seasonal Wedding Arch\assets"\{tag}_{title}.{extension} --save-as arch.png
+
+--arch wood export-- //This exports every layer, which is extremely annoying, but aseprite refuses to listen to --ignore-layer or layer specification, and it's not worth spending even more time on this. I just added the shadow to the exported wood by hand because I'm sick of fighting this.
+"C:\Program Files (x86)\Steam\steamapps\common\Aseprite\aseprite.exe" -b --tag "spring_Daffodil" "C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\Mods\[CP] Seasonal Wedding Arch\Ase\seasonal_arch.ase" --save-as "C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\Mods\[CP] Seasonal Wedding Arch\assets\wood"\{layer}_wood.png
+
+
+---CWC export---
+"C:\Program Files (x86)\Steam\steamapps\common\Aseprite\aseprite.exe" -b --ignore-layer "Wood" "C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\Mods\[CP] Seasonal Wedding Arch\Ase\CWC_extra.ase" --split-tags --filename-format "C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\Mods\[CP] Seasonal Wedding Arch\assets\CWC"\{tag}_{title}.{extension} --save-as CWC_extra.png
+
+--CWC wood export--//This exports every layer, which is extremely annoying, but aseprite refuses to listen to --ignore-layer or layer specification, and it's not worth spending even more time on this. I just added the shadow to the exported wood by hand because I'm sick of fighting this.
+"C:\Program Files (x86)\Steam\steamapps\common\Aseprite\aseprite.exe" -b --tag "spring_Daffodil" "C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\Mods\[CP] Seasonal Wedding Arch\Ase\CWC_extra.ase" --save-as "C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley\Mods\[CP] Seasonal Wedding Arch\assets\CWC"\{layer}_CWC_wood.png
+
+
