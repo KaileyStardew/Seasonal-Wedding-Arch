@@ -35,24 +35,26 @@
 			"Description": "Edit the arch shown during the Ridgeside Village hotel wedding reception.",
 			"Section": "Compatibility"
 		},	
-		"Custom Wedding Ceremony Decor" : {
+		"CWC Decor" : {
 			"AllowValues": "true, false",
             "Default": "true",
-			"Description": "Replace the misc wedding decorations shown in the custom wedding ceremony to better match the seasonal wedding arch.",
+			"Description": "Replace the misc wedding decorations in Custom Wedding Ceremony to better match the seasonal wedding arch.",
 			"Section": "Compatibility"
 		},
-		"Custom Wedding Ceremony Rug Colour" : {
+		"CWC Rug Colour" : {
 			"AllowValues": "Green, Beige, White, Original",
             "Default": "Green",
-			"Description": "Recolour the decorative rug shown in the custom wedding ceremony to better match the seasonal wedding arch.",
+			"Description": "Recolour the rug in Custom Wedding Ceremony to better match the seasonal wedding arch.",
 			"Section": "Compatibility"
 		},
+			//I have Life Cycle off by default because Lewis is placed so close to the arch in the Life Cycle wedding
+			//It looks fine with the vanilla arch because it's so thin, but with mine he clips
 		"Life Cycle Arch" : {
 			"AllowValues": "true, false",
             "Default": "false",
 			"Description": "Edit the arch shown during the Rival Heart Events NPC wedding ceremonies. Note: Lewis' positioning in the ceremony means he clips the arch slightly.",
 			"Section": "Compatibility"
-		},	
+		},
 		"Enable Mod" : {
 			"AllowValues": "true, false",
             "Default": "true",
@@ -61,6 +63,10 @@
 		},	
 	},
 	"DynamicTokens": [
+//Dynamic tokens my beloved <3
+	//Not sure what you're looking at? See here: https://github.com/Pathoschild/StardewMods/blob/develop/ContentPatcher/docs/author-guide/tokens.md#dynamic-tokens
+	//These let me name all my files something like spring_Tulip_arch or winter_Crocus_arch (eg, season_flower_arch), and only use the one file with the right combination of user setting and season on the fly, so I don't need to manually juggle all 36 flower (and 10 wood) options
+	//This is the most complicated aspect of this mod-everything else is just image edits
 //WOOD TYPE
 	//Default fallback
 		{
@@ -76,6 +82,8 @@
 			}
 		},
 	//Cornucopia seasonal
+		//This lets the cornucopia wood options automatically swap with the seasons, without duplicating their .png assets
+		//If the other conucopia options are selected, they'll be static (eg, selecting Cornucopia-SpringTrellis means you'll get the spring trellis in every season)
 		{
 			"Name": "WoodTypeToken",
 			"Value": "Cornucopia-{{Season}}Trellis",
@@ -277,12 +285,14 @@
 		},
 	],
 	"Changes": [
+//LOADS
 	//Load arch
         {
             "Action": "Load",
             "Target": "KaileyStardew.WeddingArch/{{WoodTypeToken}}_wood",
             "FromFile": "assets/wood/{{TargetWithoutPath}}.png"
         },
+	//Load flowers
         {
             "Action": "Load",
             "Target": "KaileyStardew.WeddingArch/{{Season}}_{{ArchTypeToken}}_arch",
@@ -294,7 +304,8 @@
             "Target": "KaileyStardew.WeddingArch/{{Season}}_{{ArchTypeToken}}_CWC_extra, KaileyStardew.WeddingArch/{{Custom Wedding Ceremony Rug Colour}}_CWC_rug, KaileyStardew.WeddingArch/{{WoodTypeToken}}_CWC_wood",
             "FromFile": "assets/CWC/{{TargetWithoutPath}}.png"
         },	
-	//Vanilla edits
+//VANILLA EDITS
+		//The wood components of the arch are added separately, and stored in different files, so that the flower and wood colour can be configured independently
 		{
 			"Action": "EditImage",
 			"Target": "LooseSprites/Cursors",
@@ -305,6 +316,7 @@
 				"Enable Mod": "true"
 			}
 		},
+		//Everything that isn't the arch (flowers, lights etc) gets pasted on top of the arch like a sticker
 		{
 			"Action": "EditImage",
 			"Target": "LooseSprites/Cursors",
@@ -316,6 +328,7 @@
 				"Enable Mod": "true"
 			}
 		},
+//COMPAT
 	//CWC compat - Arch + Left Candle
 		{
 			"Action": "EditImage",
