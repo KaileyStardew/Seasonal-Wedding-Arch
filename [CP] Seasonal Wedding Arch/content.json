@@ -35,16 +35,16 @@
 			"Description": "Edit the arch shown during the Ridgeside Village hotel wedding reception.",
 			"Section": "Compatibility"
 		},	
-		"Custom Wedding Ceremony Decor" : {
+		"CWC Decor" : {
 			"AllowValues": "true, false",
             "Default": "true",
-			"Description": "Replace the misc wedding decorations shown in the custom wedding ceremony to better match the seasonal wedding arch.",
+			"Description": "Replace the misc wedding decorations in Custom Wedding Ceremony to better match the seasonal wedding arch.",
 			"Section": "Compatibility"
 		},
-		"Custom Wedding Ceremony Rug Colour" : {
+		"CWC Rug Colour" : {
 			"AllowValues": "Green, Beige, White, Original",
             "Default": "Green",
-			"Description": "Recolour the decorative rug shown in the custom wedding ceremony to better match the seasonal wedding arch.",
+			"Description": "Recolour the rug in Custom Wedding Ceremony to better match the seasonal wedding arch.",
 			"Section": "Compatibility"
 		},
 		"Life Cycle Arch" : {
